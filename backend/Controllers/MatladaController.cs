@@ -12,9 +12,9 @@ namespace backend.Controllers
     [ApiController]
     public class MatladaController : ControllerBase
     {
-        private readonly MataladaContext _context;
+        private readonly MatladaContext _context;
 
-        public MatladaController(MataladaContext context)
+        public MatladaController(MatladaContext context)
         {
             _context = context;
         }
@@ -23,14 +23,14 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Matlada>>> GetMatlada()
         {
-            return await _context.Matlada.ToListAsync();
+            return await _context.Matlador.ToListAsync();
         }
 
         // GET: api/Matlada/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Matlada>> GetMatlada(int id)
         {
-            var matlada = await _context.Matlada.FindAsync(id);
+            var matlada = await _context.Matlador.FindAsync(id);
 
             if (matlada == null)
             {
@@ -76,7 +76,7 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Matlada>> PostMatlada(Matlada matlada)
         {
-            _context.Matlada.Add(matlada);
+            _context.Matlador.Add(matlada);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMatlada", new { id = matlada.Id }, matlada);
@@ -86,13 +86,13 @@ namespace backend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMatlada(int id)
         {
-            var matlada = await _context.Matlada.FindAsync(id);
+            var matlada = await _context.Matlador.FindAsync(id);
             if (matlada == null)
             {
                 return NotFound();
             }
 
-            _context.Matlada.Remove(matlada);
+            _context.Matlador.Remove(matlada);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -100,7 +100,7 @@ namespace backend.Controllers
 
         private bool MatladaExists(int id)
         {
-            return _context.Matlada.Any(e => e.Id == id);
+            return _context.Matlador.Any(e => e.Id == id);
         }
     }
 }
