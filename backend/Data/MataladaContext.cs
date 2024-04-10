@@ -7,6 +7,8 @@ public class MatladaContext : DbContext
     }
 
     public DbSet<Matlada> Matlador { get; set; }
+    public DbSet<Statistics> Statistics { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

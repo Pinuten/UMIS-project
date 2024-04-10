@@ -10,7 +10,6 @@ public class Matlada
     public Size Size { get; set; }
     public DateTime CreatedAt { get; set; }
     public string Name { get; set; }
-    public int EatenCount { get; set; } // New property to count how many times a matlåda has been eaten
 
 }
 

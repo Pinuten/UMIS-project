@@ -117,13 +117,34 @@ namespace backend.Controllers
                 return NotFound();
             }
 
-            matlada.EatenCount += 1; 
+            var stats = await _context.Statistics.FirstOrDefaultAsync();
+            if (stats == null)
+            {
+                stats = new Statistics { Eaten = 0 };
+                _context.Statistics.Add(stats);
+            }
+
+            stats.Eaten += 1;
             _context.Matlador.Remove(matlada);
 
             await _context.SaveChangesAsync();
 
-            return NoContent(); 
+            return NoContent();
         }
+        [HttpGet("Eaten")]
+        public async Task<int> GetEaten()
+        {
+            var stats = await _context.Statistics.FirstOrDefaultAsync();
+            if (stats != null)
+            {
+                return stats.Eaten;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
 
         private bool MatladaExists(int id)
         {

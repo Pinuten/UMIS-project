@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(MatladaContext))]
-    partial class MatladaContextModelSnapshot : ModelSnapshot
+    [Migration("20240410210839_MigrationName")]
+    partial class MigrationName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -47,35 +50,21 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 4, 10, 23, 30, 30, 270, DateTimeKind.Local).AddTicks(1510),
+                            CreatedAt = new DateTime(2024, 4, 10, 23, 8, 38, 747, DateTimeKind.Local).AddTicks(1020),
                             EatenCount = 0,
-                            Guid = "b4b0c8cc-63f4-47e7-99e7-c86cb8661cb2",
+                            Guid = "8b086b08-8d91-4dc7-a9ea-2661cc70e3f4",
                             Name = "My First Matlada",
                             Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 4, 10, 23, 30, 30, 270, DateTimeKind.Local).AddTicks(1550),
+                            CreatedAt = new DateTime(2024, 4, 10, 23, 8, 38, 747, DateTimeKind.Local).AddTicks(1060),
                             EatenCount = 0,
-                            Guid = "4ceeb16e-d32a-459f-b81f-d88b60dafd0b",
+                            Guid = "ed4c5369-aab3-4198-8a60-bf4bad8a6ae5",
                             Name = "My Second Matlada",
                             Size = 1
                         });
-                });
-
-            modelBuilder.Entity("Statistics", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Eaten")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Statistics");
                 });
 #pragma warning restore 612, 618
         }
