@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MataladaContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MataladaContext") ?? throw new InvalidOperationException("Connection string 'MataladaContext' not found.")));
 
 // Add services to the container.
 
