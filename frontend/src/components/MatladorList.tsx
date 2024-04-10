@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-// Define TypeScript interface for Matlada
 interface Matlada {
   id: number;
   guid: string;
@@ -13,7 +12,7 @@ const MatladaList: React.FC = () => {
   const [matlador, setMatlador] = useState<Matlada[]>([]);
 
   useEffect(() => {
-    fetchMatlador(); // Call fetchMatlador on component mount
+    fetchMatlador();
   }, []);
 
   const fetchMatlador = async () => {
@@ -40,6 +39,20 @@ const MatladaList: React.FC = () => {
     }
   };
 
+  const eatMatlada = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:5165/api/Matlada/Eaten/${id}`, {
+        method: 'POST',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to mark the matlåda as eaten.');
+      }
+      fetchMatlador(); 
+    } catch (error) {
+      console.error("Error marking matlåda as eaten: ", error);
+    }
+  };
+
   return (
     <div>
       <h2>Matlådor List</h2>
@@ -48,8 +61,11 @@ const MatladaList: React.FC = () => {
           {matlador.map((matlada) => (
             <li key={matlada.id}>
               {matlada.name} - Size: {matlada.size}, Created At: {new Date(matlada.createdAt).toLocaleDateString()}
-              <button onClick={() => deleteMatlada(matlada.id)} style={{ marginLeft: '10px' }}>
+              <button onClick={() => deleteMatlada(matlada.id)} style={{ marginLeft: '10px', marginRight: '10px' }}>
                 Delete
+              </button>
+              <button onClick={() => eatMatlada(matlada.id)} style={{ marginLeft: '10px' }}>
+                Eat
               </button>
             </li>
           ))}

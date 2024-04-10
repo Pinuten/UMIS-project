@@ -108,6 +108,22 @@ namespace backend.Controllers
 
             return NoContent();
         }
+        [HttpPost("Eaten/{id}")]
+        public async Task<IActionResult> EatMatlada(int id)
+        {
+            var matlada = await _context.Matlador.FindAsync(id);
+            if (matlada == null)
+            {
+                return NotFound();
+            }
+
+            matlada.EatenCount += 1; 
+            _context.Matlador.Remove(matlada);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent(); 
+        }
 
         private bool MatladaExists(int id)
         {
