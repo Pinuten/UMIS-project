@@ -74,12 +74,23 @@ namespace backend.Controllers
         // POST: api/Matlada
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Matlada>> PostMatlada(Matlada matlada)
+        public async Task<IActionResult> AddMatlada([FromBody] Matlada matlada)
         {
-            _context.Matlador.Add(matlada);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                _context.Matlador.Add(matlada);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMatlada", new { id = matlada.Id }, matlada);
+                return CreatedAtAction("GetMatlada", new { id = matlada.Id }, matlada);
+            }
+
+
+
+
         }
 
         // DELETE: api/Matlada/5

@@ -1,15 +1,15 @@
 using System;
-using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations;
 
 public class Matlada
 {
-    [Key] 
-    public int Id { get; set; }
+    [Key]
+    public int Id { get; set; } 
 
-    public required string Guid { get; set; }
-    public required Size Size { get; set; }
-    public required DateTime CreatedAt { get; set; }
-    public required string Name { get; set; }
+    public string Guid { get; set; } = System.Guid.NewGuid().ToString();
+    public Size Size { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public string Name { get; set; }
 }
 
 public enum Size
