@@ -13,6 +13,8 @@ public class MatladaContext : DbContext
         modelBuilder.Entity<Matlada>().HasData(
             new Matlada
             {
+                Id = 1,
+
                 Guid = Guid.NewGuid().ToString(),
                 Size = Size.Normal,
                 CreatedAt = DateTime.Now,
@@ -20,6 +22,7 @@ public class MatladaContext : DbContext
             },
             new Matlada
             {
+                Id = 2,
                 Guid = Guid.NewGuid().ToString(),
                 Size = Size.Small,
                 CreatedAt = DateTime.Now,
