@@ -9,16 +9,23 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className='app-container'>
-      <div className="headerContainer">
+    <body>
+     
+
+      <div className='app-container'>
+        <div className="headerContainer">
           <Slide />
           <h1 className='text-container'><em>Matlådor</em></h1>
+        </div>
 
-          <StatsTracker />
+        <MatladorList />
+        <StatsTracker />
+
       </div>
+    </body>
 
-      <MatladorList />
-    </div>
+
+
   );
 };
 
