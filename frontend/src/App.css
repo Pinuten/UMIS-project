@@ -1,12 +1,23 @@
 /* Global Styles */
-body {
-  background-color: #f8f8f8; 
-  color: #333; 
-  font-family: Didot, serif; 
+/* Global Styles */
+body, .app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* This will vertically center everything, remove if not needed */
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f8f8f8; /* Off-white background */
+  color: #333; /* Adjust if you want a different font color */
+  font-family: Didot, serif; /* Set the global font */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+h1, h2, h3, h4, h5, h6, input, select, button {
+  font-family: Didot, serif; /* Ensure all text elements use Didot */
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Didot, serif; 

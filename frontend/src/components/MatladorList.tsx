@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css'
+import trashIcon from './assets/noun-trash-6760651.png';
+
 
 interface Matlada {
   id: number;
@@ -48,26 +50,32 @@ const MatladaList: React.FC = () => {
       if (!response.ok) {
         throw new Error('Failed to mark the matlåda as eaten.');
       }
-      fetchMatlador(); 
+      fetchMatlador();
     } catch (error) {
       console.error("Error marking matlåda as eaten: ", error);
     }
   };
 
+  // Part of MatladaList.tsx
   return (
     <div className="matlada-list-container">
       <h2>Matlådor List</h2>
       {matlador.length > 0 ? (
-        <ul>
+        <ul className="matlada-list">
           {matlador.map((matlada) => (
-            <li key={matlada.id}>
-              {matlada.name} - Size: {matlada.size}, Created At: {new Date(matlada.createdAt).toLocaleDateString()}
-              <button onClick={() => deleteMatlada(matlada.id)} style={{ marginLeft: '10px', marginRight: '10px' }}>
-                Delete
-              </button>
-              <button onClick={() => eatMatlada(matlada.id)} style={{ marginLeft: '10px' }}>
-                Eat
-              </button>
+            <li key={matlada.id} className="matlada-item">
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <span>{matlada.name}</span> {/* Display only the name or minimal info */}
+                  </div>
+                  <div className="flip-card-back">
+                    Size: {matlada.size}, Created At: {new Date(matlada.createdAt).toLocaleDateString()}
+                    <button onClick={() => deleteMatlada(matlada.id)}><img src= "/Users/salt-dev/salt/hackDay/matProject/frontend/src/assets/noun-trash-6760651.svg" alt="delete"/></button>
+                    <button onClick={() => eatMatlada(matlada.id)}>Eat</button>
+                  </div>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
@@ -76,6 +84,7 @@ const MatladaList: React.FC = () => {
       )}
     </div>
   );
+
 };
 
 export default MatladaList;
