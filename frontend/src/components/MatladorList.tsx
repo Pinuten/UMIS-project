@@ -3,6 +3,7 @@ import './styles.css'
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import flower from '/src/assets/flower.png'
+import { useAuth0 } from '@auth0/auth0-react';
 dayjs.extend(relativeTime);
 
 
@@ -21,43 +22,62 @@ const MatladaList: React.FC = () => {
     fetchMatlador();
   }, []);
 
-  const fetchMatlador = async () => {
-    try {
-      const response = await fetch('http://localhost:5165/api/Matlada');
-      const data = await response.json();
-      setMatlador(data);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
+  const { getAccessTokenSilently } = useAuth0();
 
-  const deleteMatlada = async (id: number) => {
-    try {
-      const response = await fetch(`http://localhost:5165/api/Matlada/${id}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete the matlåda.');
-      }
-      fetchMatlador();
-    } catch (error) {
-      console.error("Error deleting matlåda: ", error);
+const fetchMatlador = async () => {
+  try {
+    const token = await getAccessTokenSilently();
+    const response = await fetch('http://localhost:5165/api/Matlada', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error('Failed to fetch matlådor.');
     }
-  };
+    setMatlador(data);
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+};
 
-  const eatMatlada = async (id: number) => {
-    try {
-      const response = await fetch(`http://localhost:5165/api/Matlada/Eaten/${id}`, {
-        method: 'POST',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to mark the matlåda as eaten.');
-      }
-      fetchMatlador();
-    } catch (error) {
-      console.error("Error marking matlåda as eaten: ", error);
+const deleteMatlada = async (id: number) => {
+  try {
+    const token = await getAccessTokenSilently();
+    const response = await fetch(`http://localhost:5165/api/Matlada/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete the matlåda.');
     }
-  };
+    fetchMatlador();
+  } catch (error) {
+    console.error("Error deleting matlåda: ", error);
+  }
+};
+
+const eatMatlada = async (id: number) => {
+  try {
+    const token = await getAccessTokenSilently();
+    const response = await fetch(`http://localhost:5165/api/Matlada/Eaten/${id}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Failed to mark the matlåda as eaten.');
+    }
+    fetchMatlador();
+  } catch (error) {
+    console.error("Error marking matlåda as eaten: ", error);
+  }
+};
+
   const getSizeDescription = (size: number) => {
     switch(size) {
       case 0: return "";
@@ -90,7 +110,7 @@ const MatladaList: React.FC = () => {
         </ul>
       ) : (
         <>
-        <p>No matlådor found.</p>
+        <p>Your fridge is empty.</p>
         <img src={flower} alt="flower" />
         </>
       )}

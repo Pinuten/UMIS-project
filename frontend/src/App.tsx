@@ -29,7 +29,7 @@ const App: React.FC = () => {
         </>
       ) : (
         <>
-        <h3><strong>Matlåda (n.)</strong> [<em>matˈloːda</em>] <strong>Swedish</strong><br />Swedish for lunch box</h3>
+        <h3><strong>Matlåda (n.)</strong> [<em>matˈloːda</em>] <strong>Swedish</strong><br/>Swedish for lunch box</h3>
         <img src={fridge} alt="fridge" />
         </>
       )}
