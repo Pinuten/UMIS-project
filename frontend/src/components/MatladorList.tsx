@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './styles.css'
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import flower from '/src/assets/flower.png'
 dayjs.extend(relativeTime);
 
 
@@ -88,7 +89,10 @@ const MatladaList: React.FC = () => {
           ))}
         </ul>
       ) : (
+        <>
         <p>No matlådor found.</p>
+        <img src={flower} alt="flower" />
+        </>
       )}
     </div>
   );
