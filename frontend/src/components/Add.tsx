@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles.css';
 
 type MatladaFormState = {
   name: string;
@@ -53,7 +54,7 @@ export const CreateMatladaForm: React.FC = () => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="matlada-form">
       <div>
         <label htmlFor="name">Name:</label>
         <input

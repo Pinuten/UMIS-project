@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './styles.css'
 
 interface Matlada {
   id: number;
@@ -54,7 +55,7 @@ const MatladaList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="matlada-list-container">
       <h2>Matlådor List</h2>
       {matlador.length > 0 ? (
         <ul>
