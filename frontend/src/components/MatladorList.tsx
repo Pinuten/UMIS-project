@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css'
-import trashIcon from './assets/noun-trash-6760651.png';
+import trashIcon from '/src/assets/trashIcon.svg';
+import eatIcon from '/src/assets/eatIcon.svg';
+
 
 
 interface Matlada {
@@ -71,8 +73,12 @@ const MatladaList: React.FC = () => {
                   </div>
                   <div className="flip-card-back">
                     Size: {matlada.size}, Created At: {new Date(matlada.createdAt).toLocaleDateString()}
-                    <button onClick={() => deleteMatlada(matlada.id)}><img src= "/Users/salt-dev/salt/hackDay/matProject/frontend/src/assets/noun-trash-6760651.svg" alt="delete"/></button>
-                    <button onClick={() => eatMatlada(matlada.id)}>Eat</button>
+                    <button onClick={() => deleteMatlada(matlada.id)} className="button-style">
+                      <img src={trashIcon} alt="delete" />
+                    </button>
+                    <button onClick={() => eatMatlada(matlada.id)} className="button-style" >
+                      <img src={eatIcon} alt="eat" />
+                    </button>
                   </div>
                 </div>
               </div>
