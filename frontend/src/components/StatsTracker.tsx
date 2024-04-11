@@ -34,7 +34,7 @@ const StatsTracker = () => {
         {showInfo ? 'Hide Info' : 'Show Info'}
       </button>
       {showInfo && amountSaved !== null && (
-        <p>You have saved {amountSaved} amount by eating matlådor instead of eating out.</p>
+        <p>You have saved {amountSaved}kr amount by eating matlådor instead of eating out.</p>
       )}
     </div>
   );

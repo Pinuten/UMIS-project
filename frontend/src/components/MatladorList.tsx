@@ -57,11 +57,15 @@ const MatladaList: React.FC = () => {
       console.error("Error marking matlåda as eaten: ", error);
     }
   };
-
-  // Part of MatladaList.tsx
+  const getSizeDescription = (size: number) => {
+    switch(size) {
+      case 0: return "";
+      case 1: return "Small";
+      default: return "Unknown size"; 
+    }
+  };
   return (
     <div className="matlada-list-container">
-      <h2>Matlådor List</h2>
       {matlador.length > 0 ? (
         <ul className="matlada-list">
           {matlador.map((matlada) => (
@@ -69,16 +73,14 @@ const MatladaList: React.FC = () => {
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <span>{matlada.name}</span> {/* Display only the name or minimal info */}
+                    <span>{matlada.name}</span>
                   </div>
                   <div className="flip-card-back">
-                    Size: {matlada.size}, Created At: {new Date(matlada.createdAt).toLocaleDateString()}
-                    <button onClick={() => deleteMatlada(matlada.id)} className="button-style">
-                      <img src={trashIcon} alt="delete" />
-                    </button>
-                    <button onClick={() => eatMatlada(matlada.id)} className="button-style" >
-                      <img src={eatIcon} alt="eat" />
-                    </button>
+                  {getSizeDescription(matlada.size)} Created At: {new Date(matlada.createdAt).toLocaleDateString()}
+                    <div className="button-container">
+                      <button onClick={() => deleteMatlada(matlada.id)} className="button-style">Throw away</button>
+                      <button onClick={() => eatMatlada(matlada.id)} className="button-style" >Eat</button>
+                    </div>
                   </div>
                 </div>
               </div>

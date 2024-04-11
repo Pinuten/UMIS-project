@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react'; 
 import './styles.css';
 
 type MatladaFormState = {
@@ -8,6 +9,7 @@ type MatladaFormState = {
 
 export const CreateMatladaForm: React.FC = () => {
   const [formState, setFormState] = useState<MatladaFormState>({ name: '', size: 'Normal' });
+  const { getAccessTokenSilently } = useAuth0(); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -16,23 +18,21 @@ export const CreateMatladaForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     const sizeEnumValue = formState.size === 'Normal' ? 0 : 1;
-
     const matladaToPost = {
-        name: formState.name,
-        size: sizeEnumValue,
+      name: formState.name,
+      size: sizeEnumValue,
     };
 
-    console.log('Posting matlåda:', matladaToPost);
-
-
-
     try {
+      const accessToken = await getAccessTokenSilently(); 
+      console.log(accessToken);
       const response = await fetch('http://localhost:5165/api/Matlada', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
+          'Authorization': `Bearer ${accessToken}`, 
         },
         body: JSON.stringify(matladaToPost),
       });
@@ -41,7 +41,7 @@ export const CreateMatladaForm: React.FC = () => {
         alert('Matlåda created successfully!');
         setFormState({ name: '', size: 'Normal' });
       } else {
-        const errorResponse = await response.text(); 
+        const errorResponse = await response.text();
         console.error('Failed to create Matlåda:', errorResponse);
         alert('Failed to create Matlåda. Please try again.');
       }
@@ -50,8 +50,6 @@ export const CreateMatladaForm: React.FC = () => {
       alert('An error occurred. Please try again.');
     }
   };
-
-
 
   return (
     <form onSubmit={handleSubmit} className="matlada-form">

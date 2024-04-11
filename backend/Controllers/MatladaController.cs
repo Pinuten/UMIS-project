@@ -21,7 +21,6 @@ namespace backend.Controllers
         }
 
         // GET: api/Matlada
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Matlada>>> GetMatlada()
         {
@@ -29,7 +28,6 @@ namespace backend.Controllers
         }
 
         // GET: api/Matlada/5
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Matlada>> GetMatlada(int id)
         {
@@ -45,7 +43,6 @@ namespace backend.Controllers
 
         // PUT: api/Matlada/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMatlada(int id, Matlada matlada)
         {
@@ -77,7 +74,6 @@ namespace backend.Controllers
 
         // POST: api/Matlada
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddMatlada([FromBody] inputModel inputModel)
         {
@@ -98,7 +94,6 @@ namespace backend.Controllers
 
         }
         // DELETE: api/Matlada/5
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMatlada(int id)
         {
@@ -113,7 +108,6 @@ namespace backend.Controllers
 
             return NoContent();
         }
-        [Authorize]
         [HttpPost("Eaten/{id}")]
         public async Task<IActionResult> EatMatlada(int id)
         {
@@ -137,7 +131,6 @@ namespace backend.Controllers
 
             return NoContent();
         }
-        [Authorize]
         [HttpGet("Eaten")]
         public async Task<int> GetEaten()
         {
