@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css'
-import trashIcon from '/src/assets/trashIcon.svg';
-import eatIcon from '/src/assets/eatIcon.svg';
 
 
 
