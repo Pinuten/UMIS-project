@@ -11,11 +11,12 @@ const App: React.FC = () => {
   return (
     <div className='app-container'>
       <div className="headerContainer">
-        <Slide /> 
-        <h1><em>Matlådor</em></h1> 
-        <StatsTracker /> 
+          <Slide />
+          <h1 className='text-container'><em>Matlådor</em></h1>
+
+          <StatsTracker />
       </div>
-      
+
       <MatladorList />
     </div>
   );

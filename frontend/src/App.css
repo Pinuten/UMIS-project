@@ -1,7 +1,4 @@
 
-
-
-
 body, .app-container {
   display: flex;
   flex-direction: column;
@@ -28,7 +25,18 @@ h1, h2, h3, h4, h5, h6, input, select, button {
 
 .headerContainer{
   
-  background-color: aqua ;
-  width: 200%;
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+  background-color:#f3e04d;
+  width: 150%;
   justify-content: space-evenly;
+
+}
+.button-container{
+  justify-content: space-around;
+}
+
+.text-container{
+
 }
