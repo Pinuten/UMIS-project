@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css'
-
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 
 interface Matlada {
@@ -58,8 +60,8 @@ const MatladaList: React.FC = () => {
   const getSizeDescription = (size: number) => {
     switch(size) {
       case 0: return "";
-      case 1: return "Small";
-      default: return "Unknown size"; 
+      case 1: return "Small, ";
+      default: return "Unknown size, "; 
     }
   };
   return (
@@ -74,7 +76,7 @@ const MatladaList: React.FC = () => {
                     <span>{matlada.name}</span>
                   </div>
                   <div className="flip-card-back">
-                  {getSizeDescription(matlada.size)} Created At: {new Date(matlada.createdAt).toLocaleDateString()}
+                  {getSizeDescription(matlada.size)} cooked {dayjs(matlada.createdAt).fromNow()}
                     <div className="button-container">
                       <button onClick={() => deleteMatlada(matlada.id)} className="button-style">Throw away</button>
                       <button onClick={() => eatMatlada(matlada.id)} className="button-style" >Eat</button>
