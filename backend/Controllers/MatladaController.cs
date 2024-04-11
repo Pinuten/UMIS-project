@@ -74,25 +74,24 @@ namespace backend.Controllers
         // POST: api/Matlada
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> AddMatlada([FromBody] Matlada matlada)
+        public async Task<IActionResult> AddMatlada([FromBody] inputModel inputModel)
         {
-            if (!ModelState.IsValid)
+
+            Console.WriteLine("we are here", inputModel);
+            
+            var matlada = new Matlada
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                _context.Matlador.Add(matlada);
-                await _context.SaveChangesAsync();
+                Name = inputModel.Name,
+                Size = inputModel.Size,
+                CreatedAt = DateTime.UtcNow 
+            };
 
-                return CreatedAtAction("GetMatlada", new { id = matlada.Id }, matlada);
-            }
+            _context.Matlador.Add(matlada);
+            await _context.SaveChangesAsync();
 
-
-
+            return CreatedAtAction("GetMatlada", new { id = matlada.Id }, matlada);
 
         }
-
         // DELETE: api/Matlada/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMatlada(int id)
@@ -141,6 +140,7 @@ namespace backend.Controllers
             }
             else
             {
+
                 return 0;
             }
         }

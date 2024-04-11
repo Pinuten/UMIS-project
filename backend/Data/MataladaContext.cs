@@ -17,7 +17,7 @@ public class MatladaContext : DbContext
             {
                 Id = 1,
 
-                Guid = Guid.NewGuid().ToString(),
+                //Guid = Guid.NewGuid().ToString(),
                 Size = Size.Normal,
                 CreatedAt = DateTime.Now,
                 Name = "My First Matlada"
@@ -25,7 +25,7 @@ public class MatladaContext : DbContext
             new Matlada
             {
                 Id = 2,
-                Guid = Guid.NewGuid().ToString(),
+                //Guid = Guid.NewGuid().ToString(),
                 Size = Size.Small,
                 CreatedAt = DateTime.Now,
                 Name = "My Second Matlada"
