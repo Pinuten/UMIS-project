@@ -12,13 +12,13 @@
     width: 100%;
     max-width: 300px; 
     margin: 0 auto;
+    color: #3b3b3b;
 
   }
   
   .matlada-form input, .matlada-form select, .matlada-form button {
     padding: 8px;
     border-radius: 4px;
-    border: 1px solid #ccc;
   }
   
   .matlada-list {
@@ -141,3 +141,6 @@
 }
 
 
+::placeholder{
+  color: #dddddd
+}

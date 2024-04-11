@@ -54,18 +54,17 @@ export const CreateMatladaForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="matlada-form">
       <div>
-        <label htmlFor="name">Name:</label>
         <input
           type="text"
           id="name"
           name="name"
+          placeholder='What did you cook?'
           value={formState.name}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label htmlFor="size">Size:</label>
         <select
           id="size"
           name="size"
@@ -73,11 +72,11 @@ export const CreateMatladaForm: React.FC = () => {
           onChange={handleChange}
           required
         >
-          <option value="Normal">Normal</option>
-          <option value="Small">Small</option>
+          <option value="Normal">Lunch</option>
+          <option value="Small">Snack</option>
         </select>
       </div>
-      <button type="submit">Create Matlåda</button>
+      <button type="submit">Add</button>
     </form>
   );
 };

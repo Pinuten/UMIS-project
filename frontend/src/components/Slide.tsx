@@ -26,7 +26,7 @@ const MatladaFormContainer: React.FC = () => {
   return (
     <>
       <button onClick={toggleForm}>
-        {showForm ? 'Close Matlåda Form' : 'Open Matlåda Form'}
+        {showForm ? 'Close' : 'Add Matlåda'}
       </button>
       {showForm && (
         <div className={`matlada-form-container ${animationClass}`}>
