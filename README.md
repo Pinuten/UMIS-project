@@ -5,3 +5,11 @@
 ### Hackday project 
 
 a silly little app that helps you organise you lunches during the week. Built over the course of two days. Backend in C#/.Net and Vite React for the frontend! 
+
+
+
+Consumables:
+RedBull: 9
+Instant Noodles: 2
+Frozen Pizza: 1
+Matlåda: 1
