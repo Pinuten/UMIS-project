@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 
-const AuthenticationButton: React.FC = () => {
+export const LoginButton: React.FC = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   
     if (!isAuthenticated) {
@@ -9,4 +9,6 @@ const AuthenticationButton: React.FC = () => {
   
     return <button onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>;
   };
+
+  
   
