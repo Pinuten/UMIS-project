@@ -11,5 +11,5 @@ a silly little app that helps you organise you lunches during the week. Built ov
 #### Consumables:
  - RedBull: 9
  - Instant Noodles: 2
- - Frozen Pizza: 1
+ - Frozen Pizza: 2
  - Matlåda: 1
