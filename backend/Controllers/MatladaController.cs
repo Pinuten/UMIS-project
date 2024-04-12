@@ -78,7 +78,6 @@ namespace backend.Controllers
         public async Task<IActionResult> AddMatlada([FromBody] inputModel inputModel)
         {
 
-            Console.WriteLine("we are here", inputModel);
             
             var matlada = new Matlada
             {

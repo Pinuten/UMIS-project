@@ -20,7 +20,11 @@ const MatladaList: React.FC = () => {
   const [matlador, setMatlador] = useState<Matlada[]>([]);
 
   useEffect(() => {
-    fetchMatlador();
+    const interval = setInterval(() => {
+      fetchMatlador();
+    }, 100); 
+  
+    return () => clearInterval(interval);
   }, []);
 
   const { getAccessTokenSilently } = useAuth0();
