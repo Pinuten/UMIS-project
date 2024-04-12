@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react'; 
 import './styles.css';
-import { MatladaContext } from '../Context';
 
 type MatladaFormState = {
   name: string;
@@ -11,7 +10,6 @@ type MatladaFormState = {
 export const CreateMatladaForm: React.FC = () => {
   const [formState, setFormState] = useState<MatladaFormState>({ name: '', size: 'Normal' });
   const { getAccessTokenSilently } = useAuth0(); 
-  const { addMatlada } = useContext(MatladaContext); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -29,6 +27,7 @@ export const CreateMatladaForm: React.FC = () => {
 
     try {
       const accessToken = await getAccessTokenSilently(); 
+      console.log(accessToken);
       const response = await fetch('http://localhost:5165/api/Matlada', {
         method: 'POST',
         headers: {
@@ -40,8 +39,7 @@ export const CreateMatladaForm: React.FC = () => {
 
       if (response.ok) {
         alert('Matlåda created successfully!');
-        addMatlada(matladaToPost); 
-        setFormState({ name: '', size: 'Normal' }); 
+        setFormState({ name: '', size: 'Normal' });
       } else {
         const errorResponse = await response.text();
         console.error('Failed to create Matlåda:', errorResponse);

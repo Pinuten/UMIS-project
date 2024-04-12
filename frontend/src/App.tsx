@@ -6,7 +6,6 @@ import './App.css'
 import { LoginButton } from './components/Login';
 import { useAuth0 } from '@auth0/auth0-react';
 import fridge from './assets/Fridge.png';
-import { MatladaProvider } from './Context';
 
 
 const App: React.FC = () => {
@@ -23,11 +22,10 @@ const App: React.FC = () => {
 
       {isAuthenticated ? (
         <>
-          <MatladaProvider> 
           <Slide />
+
           <MatladorList />
           <StatsTracker />
-        </MatladaProvider>
         </>
       ) : (
         <>
