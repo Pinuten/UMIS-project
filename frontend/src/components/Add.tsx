@@ -38,7 +38,6 @@ export const CreateMatladaForm: React.FC = () => {
       });
 
       if (response.ok) {
-        alert('Matlåda created successfully!');
         setFormState({ name: '', size: 'Normal' });
       } else {
         const errorResponse = await response.text();

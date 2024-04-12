@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(MatladaContext))]
-    partial class MatladaContextModelSnapshot : ModelSnapshot
+    [Migration("20240412091840_SeedDB")]
+    partial class SeedDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -40,28 +43,28 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 4, 11, 11, 19, 18, 54, DateTimeKind.Local).AddTicks(1780),
+                            CreatedAt = new DateTime(2024, 4, 11, 11, 18, 39, 692, DateTimeKind.Local).AddTicks(7000),
                             Name = "Chicken Salad Lunchbox",
                             Size = 0
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 4, 10, 11, 19, 18, 54, DateTimeKind.Local).AddTicks(1810),
+                            CreatedAt = new DateTime(2024, 4, 10, 11, 18, 39, 692, DateTimeKind.Local).AddTicks(7080),
                             Name = "Fruit Snack Lunchbox",
                             Size = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 4, 9, 11, 19, 18, 54, DateTimeKind.Local).AddTicks(1820),
+                            CreatedAt = new DateTime(2024, 4, 9, 11, 18, 39, 692, DateTimeKind.Local).AddTicks(7090),
                             Name = "Pasta Lunchbox",
                             Size = 0
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 4, 8, 11, 19, 18, 54, DateTimeKind.Local).AddTicks(1820),
+                            CreatedAt = new DateTime(2024, 4, 8, 11, 18, 39, 692, DateTimeKind.Local).AddTicks(7090),
                             Name = "Vegan Wrap Lunchbox",
                             Size = 0
                         });
